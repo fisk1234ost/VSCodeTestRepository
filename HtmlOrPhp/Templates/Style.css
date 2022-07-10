@@ -1,0 +1,109 @@
+/*brug auto, % og vw*/
+
+/*css til alle(minder end 1000px og nogle ting til støre) enheder*/
+.mobile-only{display: block;}
+.desktop1000px-only{display: none;}
+
+/*root fjern padding og margin*
+*{
+	margin: 0px;
+	padding: 0px;
+}*/
+
+/*deafult hue 233. 110 is better*/
+:root{
+	--main-hue: 233;
+	--main-color: hsl(var(--main-hue), 3%, 80%);
+	--light-main-color: hsl(var(--main-hue), 7%, 74%);
+	--medium-dark-main-color: hsl(var(--main-hue), 7%, 34%);
+	--dark-main-color: hsla(var(--main-hue), 25%, 26%,0.8);
+}
+
+body{
+	height: 100vh;
+}
+
+/*header stuff*/
+header{
+    background-color: rgb(86, 84, 98);
+}
+header img{
+	width: 15%;
+	display: inline-block;
+}
+header h1{
+    color: rgb(120, 205, 200);
+	font-size: xx-large;
+	display: inline-block;
+	align-self: center;
+}
+
+/*footer stuff*/
+footer{
+    background-color: rgb(0, 102, 153);
+}
+footer p{
+    color: rgb(123, 192, 181);
+}
+
+
+/*navigation*/
+nav{
+	border: 1px solid black;
+	right: 0;
+    background-color: rgb(0, 102, 153);
+    width: 100%;
+}
+nav>ul {
+	list-style-type: none;
+	overflow: hidden; 
+}
+nav li {
+	display: inline-block;
+}
+nav img{
+	/*display: inline-block;*/
+	float: right;
+}
+nav li a {
+	display: block;
+	color: #595552;
+	text-align: right;
+	padding: 14px 16px;
+	text-decoration: none;
+}*/
+
+/*CLASSES*/
+.right{
+	float: right;
+}
+
+/*css til alle enheder bredder end 1000px*/
+@media only screen and (min-width: 1000px){
+	.mobile-only{display: none;}
+	.desktop1000px-only{display: block;}
+	
+	/*navigation*/
+	nav{
+		width: 100%;
+		right: inherit;
+	}
+	nav li a {
+		text-align: left;
+	}
+	nav li a:hover {
+		background-color: #999;
+		opacity: 1;
+	}
+
+	main{ 
+		padding-top: 50px;
+	}
+	body{
+		margin: auto;
+	}
+}
+/*Z-index*//*
+nav{
+	z-index: 9;
+}*/
