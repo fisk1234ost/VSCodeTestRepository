@@ -8,11 +8,11 @@ var cellSpace = 0;
 var rotations = [-1,90,180,270];
 var CellValues = [];
 CellValues = CellValues.concat(
-  [new CellValue(Name = "0", connections = ["ggg", "ggg", "ggg", "ggg"], rotation = -1)],
-CreatRotations(new CellValue(Name = "1", connections = ["ggg", "gbg", "gbg", "gbg"], rotation = -1), [0,1,2,3]),
-CreatRotations(new CellValue(Name = "2", connections = ["gbg", "gbg", "ggg", "ggg"], rotation = -1), [0,1,2,3]),
-CreatRotations(new CellValue(Name = "3", connections = ["ggg", "gbg", "ggg", "gbg"], rotation = -1), [0,1]),
-  [new CellValue(Name = "4", connections = ["gbg", "gbg", "gbg", "gbg"], rotation = -1)]
+  [new CellValue(Name = "0", connections = ["ggg", "ggg", "ggg", "ggg"], rotation = rotations[0])],
+CreatRotations(new CellValue(Name = "1", connections = ["ggg", "gbg", "gbg", "gbg"], rotation = rotations[0]), [0,1,2,3]),
+CreatRotations(new CellValue(Name = "2", connections = ["gbg", "gbg", "ggg", "ggg"], rotation = rotations[0]), [0,1,2,3]),
+CreatRotations(new CellValue(Name = "3", connections = ["ggg", "gbg", "ggg", "gbg"], rotation = rotations[0]), [0,1]),
+  [new CellValue(Name = "4", connections = ["gbg", "gbg", "gbg", "gbg"], rotation = rotations[0])]
 );
 var grid = new Grid(CellsXY, CellValues);
 
