@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="Style.css">
+        <!--<meta http-equiv="refresh" content="5;URL=https://bytefreaks.net/howtos/create-an-html-page-with-no-javascript-that-will-redirect-the-user-after-a-few-seconds">-->
+    </head>
+    <body>
+        <header>
+            <h3>
+                Wave Function Collapse
+            </h3>
+        </header>
+
+        <nav>
+
+        </nav>
+        
+        <main>
+            <section>
+                <article>
+                    <canvas id="myCanvas" width="1000" height="1000">
+                        Your browser does not support the HTML5 canvas tag.
+                    </canvas>
+                    <div class="flex vertical">
+                        <div class="flex hidden">
+                            <p>not implemented</p>
+                            <input type="number" name="seed" min="0" max="10000000" value="10">
+                            <input type="number" id="cellCount" min="1" max="100" value="2">
+                            <input type="number" id="cellSpace" min="0" max="100" value="10">
+                            <button onclick="UserUpdateCells()">UpdateCells</button>
+                        </div>
+                        <div class="flex">
+                            <button onclick="UserRun()">Run</button>
+                            <button onclick="UserStep()">Step</button>
+                            <button onclick="UserReset()">Reset</button>
+                        </div>
+                    </div>
+                </article>
+                <article>
+                    <img id="-1" width="100" height="100" src="Imgs/TESTING LOL/-1.png" alt="null">
+                    <img id="0" width="100" height="100" src="Imgs/TESTING LOL/0.png" alt="Blank">
+                    <img id="1" width="100" height="100" src="Imgs/TESTING LOL/1.png" alt="T Shaped">
+                    <img id="2" width="100" height="100" src="Imgs/TESTING LOL/2.png" alt="L Shaped">
+                    <img id="3" width="100" height="100" src="Imgs/TESTING LOL/3.png" alt="- Shaped">
+                    <img id="4" width="100" height="100" src="Imgs/TESTING LOL/4.png" alt="+ Shaped">
+                </article>
+            </section>
+        </main>
+        <footer>
+            
+        </footer>
+    </body>
+</html>
+<script src="canvasDrawImages.js"></script>
+<script src="classes.js"></script>
+<!-- <script src="random.js"></script> -->
+<script src="script.js"></script>
+<script src="canvasDrawImagesInGrid.js"></script>
