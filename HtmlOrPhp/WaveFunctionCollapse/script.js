@@ -8,11 +8,11 @@ var cellSpace = 0;
 var rotations = [-1,90,180,270];
 var CellValues = [];
 CellValues = CellValues.concat(
-  CreatCellValues("0", ["ggg", "ggg", "ggg", "ggg"], [0]),
-  CreatCellValues("1", ["ggg", "gbg", "gbg", "gbg"], [0,1,2,3]),
-  CreatCellValues("2", ["gbg", "gbg", "ggg", "ggg"], [0,1,2,3]),
-  CreatCellValues("3", ["ggg", "gbg", "ggg", "gbg"], [0,1]),
-  CreatCellValues("4", ["gbg", "gbg", "gbg", "gbg"], [0])
+  CreateCellValues("0", ["ggg", "ggg", "ggg", "ggg"], [0]),
+  CreateCellValues("1", ["ggg", "gbg", "gbg", "gbg"], [0,1,2,3]),
+  CreateCellValues("2", ["gbg", "gbg", "ggg", "ggg"], [0,1,2,3]),
+  CreateCellValues("3", ["ggg", "gbg", "ggg", "gbg"], [0,1]),
+  CreateCellValues("4", ["gbg", "gbg", "gbg", "gbg"], [0])
 );
 var grid = new Grid(CellsXY, CellValues);
 
@@ -45,7 +45,7 @@ function logFormatGrid(toLogGrid = Grid){
   return res;
 }
 
-function CreatCellValues(Name, connectionsIn, rotationsIndexs) {
+function CreateCellValues(Name, connectionsIn, rotationsIndexs) {
   var res = [];
   for (let index = 0; index < rotationsIndexs.length; index++) {
     const rotationsIndex = rotationsIndexs[index];
@@ -105,7 +105,8 @@ async function UserReset() {
 }
 
 async function UserUpdateSettings() {
-  if (false && confirm("Sure you want to change settings?") != true) {
+  sleepTime = document.getElementById("sleepTime").value;
+  if (confirm("Sure you want to change Cell Count x*x & Cell Spacing?") != true) {
     return;
   }
   if (running) {
@@ -114,7 +115,6 @@ async function UserUpdateSettings() {
   }
   CellsXY = document.getElementById("cellCount").value;
   cellSpace = document.getElementById("cellSpace").value;
-  sleepTime = document.getElementById("sleepTime").value;
   UpdateDrawCells();
   grid = new Grid(CellsXY, CellValues);
   done = false;
