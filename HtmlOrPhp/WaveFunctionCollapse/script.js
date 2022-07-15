@@ -8,11 +8,11 @@ var cellSpace = 0;
 var rotations = [-1,90,180,270];
 var CellValues = [];
 CellValues = CellValues.concat(
-  CreatRotations("0", ["ggg", "ggg", "ggg", "ggg"], [0]),
-  CreatRotations("1", ["ggg", "gbg", "gbg", "gbg"], [0,1,2,3]),
-  CreatRotations("2", ["gbg", "gbg", "ggg", "ggg"], [0,1,2,3]),
-  CreatRotations("3", ["ggg", "gbg", "ggg", "gbg"], [0,1]),
-  CreatRotations("4", ["gbg", "gbg", "gbg", "gbg"], [0])
+  CreatCellValues("0", ["ggg", "ggg", "ggg", "ggg"], [0]),
+  CreatCellValues("1", ["ggg", "gbg", "gbg", "gbg"], [0,1,2,3]),
+  CreatCellValues("2", ["gbg", "gbg", "ggg", "ggg"], [0,1,2,3]),
+  CreatCellValues("3", ["ggg", "gbg", "ggg", "gbg"], [0,1]),
+  CreatCellValues("4", ["gbg", "gbg", "gbg", "gbg"], [0])
 );
 var grid = new Grid(CellsXY, CellValues);
 
@@ -45,7 +45,7 @@ function logFormatGrid(toLogGrid = Grid){
   return res;
 }
 
-function CreatRotations(Name, connectionsIn, rotationsIndexs) {
+function CreatCellValues(Name, connectionsIn, rotationsIndexs) {
   var res = [];
   for (let index = 0; index < rotationsIndexs.length; index++) {
     const rotationsIndex = rotationsIndexs[index];
@@ -56,11 +56,8 @@ function CreatRotations(Name, connectionsIn, rotationsIndexs) {
     for (let index = 0; index < rotationsIndex; index++) {
       tempConnections.unshift(tempConnections.pop());
     }
-    var cell = new CellValue(Name, connections = tempConnections, rotation);
-    console.log(cell);
-    res.push(cell);
+    res.push(new CellValue(Name, connections = tempConnections, rotation));
   }
-  console.log(res);
   return res;
 }
 
