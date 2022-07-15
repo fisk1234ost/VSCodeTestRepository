@@ -95,13 +95,35 @@ async function UserRun() {
 async function UserReset() {
   if (running) {
     done = true;
-    await sleep(1000);
+    await sleep((sleepTime*2)+5);
   }
   grid = new Grid(CellsXY, CellValues);
   done = false;
   DrawGridWithOnly('-1');
 }
 
+async function UserUpdateSettings() {
+  if (false && confirm("Sure you want to change settings?") != true) {
+    return;
+  }
+  if (running) {
+    done = true;
+    await sleep((sleepTime*2)+5);
+  }
+  CellsXY = document.getElementById("cellCount").value;
+  cellSpace = document.getElementById("cellSpace").value;
+  sleepTime = document.getElementById("sleepTime").value;
+  UpdateDrawCells();
+  grid = new Grid(CellsXY, CellValues);
+  done = false;
+  DrawGridWithOnly('-1');
+}
+
+function UserToImg() {
+  var img = new Image();
+  img.src = canvas.toDataURL();
+  document.body.appendChild(img);
+}
 
 //MAIN
 var arrayUpdateSurrounding = [];

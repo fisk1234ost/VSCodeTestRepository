@@ -37,4 +37,11 @@ function DrawGridWithOnly(imgName) {
     }
   }
 }
+
+function UpdateDrawCells() {
+  ImgSize = (canvasWidth - ((CellsXY - 1) * cellSpace))/CellsXY;
+  imgW = ImgSize;//(canvasWidth  - ((CellsX - 1) * cellSpace))/CellsX;
+  imgH = ImgSize;//(canvasHeight - ((CellsY - 1) * cellSpace))/CellsY;
+}
+
 document.onload = DrawGridWithOnly('-1');
