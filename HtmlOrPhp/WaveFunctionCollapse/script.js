@@ -1,7 +1,9 @@
 //vars
 var done = false;
 var running = false;
-//var seed = 10;
+const rnd = new Srand();
+var seed = -1;
+setSeed(seed);
 var CellsXY = 25;
 var sleepTime = 0; 
 var cellSpace = 0;
@@ -18,8 +20,9 @@ var grid = new Grid(CellsXY, CellValues);
 
 //HELPERs
 function pickRandomFromList(List) {
-  var index = Math.floor(Math.random() * List.length);
-  return List[index];
+  /*var index = Math.floor(Math.random() * List.length);
+  return List[index];*/
+  return rnd.choice(List);
 }
 
 function sleep(ms) {
@@ -59,6 +62,14 @@ function CreateCellValues(Name, connectionsIn, rotationsIndexs) {
     res.push(new CellValue(Name, connections = tempConnections, rotation));
   }
   return res;
+}
+
+function setSeed(seedIn){
+  if (seedIn == -1) {
+    rnd.randomize();
+    return;
+  }
+  rnd.seed(seedIn);
 }
 
 
@@ -102,23 +113,34 @@ async function UserReset() {
   grid = new Grid(CellsXY, CellValues);
   done = false;
   DrawGridWithOnly('-1');
+  setSeed(seed);
+}
+
+async function UserResetAndRun() {
+  await UserReset();
+  await UserRun();
 }
 
 async function UserUpdateSettings() {
   sleepTime = document.getElementById("sleepTime").value;
-  if (confirm("Sure you want to change Cell Count x*x & Cell Spacing?") != true) {
+  var tempSeed = document.getElementById("seed").value
+  var tempCellCount = document.getElementById("cellCount").value;
+  var tempCellSpace = document.getElementById("cellSpace").value;
+  if (confirm("Sure you want to change seed, Cell Count x*x & Cell Spacing?") != true) {
     return;
   }
   if (running) {
     done = true;
     await sleep((sleepTime*2)+5);
   }
-  CellsXY = document.getElementById("cellCount").value;
-  cellSpace = document.getElementById("cellSpace").value;
+  CellsXY = tempCellCount;
+  cellSpace = tempCellSpace;
+  seed = tempSeed;
   UpdateDrawCells();
   grid = new Grid(CellsXY, CellValues);
   done = false;
   DrawGridWithOnly('-1');
+  setSeed(seed);
 }
 
 function UserToImg() {

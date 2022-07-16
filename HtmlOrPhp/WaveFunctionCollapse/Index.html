@@ -6,31 +6,31 @@
     </head>
     <body>
         <header>
-            <h3>
+            <h1>
                 Wave Function Collapse
-            </h3>
+            </h1>
         </header>
 
         <nav>
-
         </nav>
-        
+
         <main>
             <section>
-                <article>
+                <article class="flex">
                     <canvas id="myCanvas" width="1000" height="1000">
                         Your browser does not support the HTML5 canvas tag.
                     </canvas>
                     <div class="flex vertical">
                         <div class="flex">
-                            <button onclick="UserRun()">Run</button>
                             <button onclick="UserStep()">Step</button>
+                            <button onclick="UserRun()">Run</button>
                             <button onclick="UserReset()">Reset</button>
+                            <button onclick="UserResetAndRun()">Reset And Run</button>
                             <button onclick="UserToImg()">To Img</button>
                         </div>
-                        <div class="flex hidden">
-                            <label for="seed">Seed</label>
-                            <input type="number" id="seed" min="0" max="10000000" value="10">
+                        <div class="flex">
+                            <label for="seed">Seed[-1 = random]</label>
+                            <input type="number" id="seed" min="-1" max="10000000" value="-1">
                         </div>
                         <div class="flex">
                             <label for="cellCount">Cell Count x*x</label>
@@ -42,7 +42,7 @@
                         </div>
                         <div class="flex">
                             <label for="sleepTime">Sleep Time Betwean Steps</label>
-                            <input type="number" id="sleepTime" min="0" max="500" value="500">
+                            <input type="number" id="sleepTime" min="0" max="50" value="500">
                         </div>
                         <div class="flex">
                             <button onclick="UserUpdateSettings()">UpdateGridSettings</button>
@@ -50,12 +50,12 @@
                     </div>
                 </article>
                 <article>
-                    <img id="-1" width="100" height="100" src="Imgs/TESTING LOL/-1.png" alt="null">
-                    <img id="0" width="100" height="100" src="Imgs/TESTING LOL/0.png" alt="Blank">
-                    <img id="1" width="100" height="100" src="Imgs/TESTING LOL/1.png" alt="T Shaped">
-                    <img id="2" width="100" height="100" src="Imgs/TESTING LOL/2.png" alt="L Shaped">
-                    <img id="3" width="100" height="100" src="Imgs/TESTING LOL/3.png" alt="- Shaped">
-                    <img id="4" width="100" height="100" src="Imgs/TESTING LOL/4.png" alt="+ Shaped">
+                    <img id="-1" width="50" height="50" src="Imgs/TESTING LOL/-1.png" alt="null">
+                    <img id="0" width="50" height="50" src="Imgs/TESTING LOL/0.png" alt="Blank">
+                    <img id="1" width="50" height="50" src="Imgs/TESTING LOL/1.png" alt="T Shaped">
+                    <img id="2" width="50" height="50" src="Imgs/TESTING LOL/2.png" alt="L Shaped">
+                    <img id="3" width="50" height="50" src="Imgs/TESTING LOL/3.png" alt="- Shaped">
+                    <img id="4" width="50" height="50" src="Imgs/TESTING LOL/4.png" alt="+ Shaped">
                 </article>
             </section>
         </main>
@@ -66,5 +66,6 @@
 </html>
 <script src="canvasDrawImages.js"></script>
 <script src="classes.js"></script>
+<script src="jsrand.min.js"></script>
 <script src="script.js"></script>
 <script src="canvasDrawImagesInGrid.js"></script>

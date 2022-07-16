@@ -1,5 +1,5 @@
 class CellValue {
-  constructor(Name, connections, rotation) {//"name", ["up", "right", "down", "left"], -1
+  constructor(Name, connections, rotation) {//"name", ["up", "right", "down", "left"], -1, 90, 180, 270
     this.Name = Name;
     this.connections = connections;
     this.rotation = rotation;
@@ -9,9 +9,6 @@ class CellValue {
     var toMatch = this.connections[direction];
     toMatch = [...toMatch].reverse().join("");
     return filter.includes(toMatch);
-  }
-  clone() {
-    return new CellValue(this.Name, [].concat(this.connections), this.rotation);
   }
 }
 
@@ -41,15 +38,9 @@ class Cell {
   }
   UpdateCell(filter, direction){
     var preOptionCount = this.options.length;
-    for (let index = preOptionCount-1; index >= 0; index--) {
-      if (this.options[index].Validate(filter, direction)) {
-        continue;
-      }
-      this.options.splice(index,1)
-    }
-    this.setOptions(this.options);
-    var postOptionCount = this.options.length;
-    if (preOptionCount != postOptionCount) {
+    var temp = this.options.filter(option => option.Validate(filter, direction));
+    this.setOptions(temp);
+    if (preOptionCount != this.options.length) {
       arrayUpdateSurrounding.push(this);
     }
   }
